@@ -2,4 +2,3 @@ node_modules/
 .env
 dataUpload.js
 contentfulData.json
-.gitignore
