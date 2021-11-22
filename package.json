@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "file-system": "^2.2.2",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "kill-port": "^1.6.1",
