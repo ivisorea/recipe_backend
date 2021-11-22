@@ -1,1 +1,4 @@
 node_modules/
+.env
+dataUpload.js
+contentful-data.json
