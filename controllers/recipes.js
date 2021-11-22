@@ -6,8 +6,7 @@ dotenv.config();
 
 export const getAllRecipes = (req, res) => {
   // CONNECTING TO DATABASE
-  const conString =
-    "postgres://nqglketf:J0ImdPqWToZNjcySnRQiXPEGc1cE07xu@tai.db.elephantsql.com/nqglketf"; //Can be found in the Details page
+  const conString = process.env.CONNECTION_STRING; //Can be found in the Details page
   const client = new pg.Client(conString);
   client.connect(function (err) {
     if (err) {

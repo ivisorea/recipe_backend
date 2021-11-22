@@ -1,5 +1,7 @@
 // ----------------- MODULES -----------------
 import pg from "pg";
+import dotenv from "dotenv";
+dotenv.config();
 // -------------------------------------------
 
 // CONNECTING TO DATABASE
