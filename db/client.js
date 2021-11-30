@@ -5,7 +5,7 @@ dotenv.config();
 // -------------------------------------------
 
 const { Pool } = pg;
-const connectionString = process.env.PG_CONNECTION;
+const connectionString = process.env.CONNECTION_STRING;
 
 const pool = new Pool({
   connectionString,
