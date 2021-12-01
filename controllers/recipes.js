@@ -23,3 +23,21 @@ export const getSingleRecipe = asyncHandler(async (req, res, next) => {
   if (!rowCount) throw new Error(`Recipe with ID = ${id} not found.`);
   res.json(rows);
 });
+
+
+// CREATE RECIPE
+export const createRecipe = asyncHandler(async (req, res, next) => {
+  const {
+    body: { recipe_name, recipe_image, recipe_description, recipe_ingredients, recipe_method, recipe_event },
+  } = req;
+  const { rows: [recipe] } = await db.query(
+    `INSERT INTO recipes (recipe_name, recipe_image, recipe_description, recipe_ingredients, recipe_method, recipe_event) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
+    [recipe_name, 
+    recipe_image, 
+    recipe_description, 
+    recipe_ingredients, 
+    recipe_method, 
+    recipe_event]
+  );
+  res.json(recipe);
+});
