@@ -15,7 +15,7 @@ export const getAllRecipes = asyncHandler(async (req, res, next) => {
 // SINGLE RECIPE
 export const getSingleRecipe = asyncHandler(async (req, res, next) => {
   const {
-    params: { id },
+    params: { restaurant },
   } = req;
   const { rowCount, rows } = await db.query(
     `SELECT * FROM recipes WHERE recipe_id=${id};`
@@ -38,6 +38,27 @@ export const createRecipe = asyncHandler(async (req, res, next) => {
     recipe_ingredients, 
     recipe_method, 
     recipe_event]
+  );
+  res.json(recipe);
+  
+});
+
+
+//Update recipe
+export const upDaterecipe = asyncHandler(async(req, res ) => {
+  const {
+    params: { id },
+    body: { recipe_name, recipe_image, recipe_description, recipe_ingredients, recipe_method, recipe_event },
+  } = req;
+  const { rows: [recipe] } = await db.query(
+    `UPDATE recipes SET recipe_name=$1, recipe_image=$2, recipe_description=$3, recipe_ingredients=$4, recipe_method=$5, recipe_event=$6 WHERE recipe_id=$7 RETURNING *;`,
+    [recipe_name,
+    recipe_image,
+    recipe_description,
+    recipe_ingredients,
+    recipe_method,
+    recipe_event,
+    id]
   );
   res.json(recipe);
 });
